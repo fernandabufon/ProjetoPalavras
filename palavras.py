@@ -2,21 +2,20 @@ import numpy as np
 import string
 from random import choice
 def main():
+
     p, arr, o, g, a, c, m = variaveis()
-    arr = palavras(p, arr, o, g, a, c, m)
-    resp = np.array(arr)
-    imprimir(arr)
-    resposta(resp)
+    resp = np.array(palavras(p, arr, o, g, a, c, m))
+    imprimir(palavras(p, arr, o, g, a, c, m), resp)
 
 
 def variaveis():
-    p = "programacao"
+    p = "PROGRAMAÇÃO"
     arr = np.array([['-'] * 8] * 11)  # criando uma matriz com 8 colunas e 11 linhas
-    o = "oracle"
-    g = "google"
-    a = "apache"
-    c = "cisco"
-    m = "meta"
+    o = "ORACLE"
+    g = "GOOGLE"
+    a = "APACHE"
+    c = "CISCO"
+    m = "META"
     return p, arr, o, g, a, c, m
 
 def palavras(p, arr, o, g, a, c, m):
@@ -38,11 +37,15 @@ def gerar_letras(arr):
     for l in range(0, 11):
         for c in range(0, 8):
             if arr[l, c] == '-':
-                arr[l, c] = choice(string.ascii_letters).lower()
+                arr[l, c] = choice(string.ascii_letters).upper()
     return arr
 
-def imprimir(arr):
+def imprimir(arr, resp):
+    print("Bem-vindo ao meu caça-palavras!! Te desafio a encontrar as palavras 'PROGRAMAÇÃO', "
+          "'ORACLE', 'GOOGLE', 'APACHE', 'CISCO' e 'META'"
+          "\nBoa sorte!\n")
     print(gerar_letras(arr))
+    resposta(resp)
 
 def resposta(resp):
     while True:
